@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parentCircle{
+            justify-items: center;
+        }
+        .circle {
+            width: 50px;
+            height: 50px;
+            display: flex;       
+            justify-content: center;  
+            align-items: center;
+            border-radius: 50%;
+            *{
+                color: white;
+            }
+        }
+        .red{
+            background-color: red;
+        }
+        .black{
+            background-color: black;
+        }
+        .content{
+            display: flex;
+            justify-content: center;  
+
+        }
+    </style>
+</head>
+<body>
+<div id="main"></div>
+
+<script src="task9.js"></script>
+<script>
+
+const tree = new Tree()
+tree.push(1)
+tree.push(2)
+tree.push(4)
+tree.push(3)
+tree.push(5)
+tree.push(6)
+tree.remove(4)
+tree.remove(1)
+// tree.push(2)
+
+// tree.remove(5)
+console.log(tree.head)
+rendering(document.getElementById("main"), tree.head)
+
+
+function rendering(block, item){
+    if (item) {
+
+        const parentCircle = document.createElement('div');
+        parentCircle.classList = `parentCircle`;
+        const circle = document.createElement('div');
+        circle.classList = `circle ${item.colorRed?"red":"black"}`;
+        const span = document.createElement('span');
+        
+        span.innerHTML = item?.value?item.value:null
+        circle.appendChild(span)
+        const content = document.createElement('div');
+        content.classList = `content`;
+        if (item) {
+             const item1 = document.createElement('div');
+            const item2 = document.createElement('div');
+            rendering(item1, item.childLeft)
+            rendering(item2, item.childRight)
+            content.appendChild(item1)
+            content.appendChild(item2)
+        }
+       
+        parentCircle.appendChild(circle)
+        block.appendChild(parentCircle)
+        block.appendChild(content)
+    }
+    
+}
+</script>
+</body>
+</html>
