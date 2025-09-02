@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .contener_canvas{
+            height: 340px;
+            width: 880px;
+            overflow: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            .canvas{
+                border: 1px solid black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="contener_canvas">
+            <canvas class="canvas" id="canvas"></canvas>
+        </div>
+    </div>
+    
+    <script>
+        const dataTest = {
+            data: [
+                {
+                    indicator_1_1:{
+                        value: 10,
+                        color: "#BCD0EEE0"
+                    },
+                    indicator_1_2:{
+                        value: 20,
+                        color: "#5080CB"
+                    },
+                    indicator_2_1:{
+                        value: 21,
+                        color: "#BCD0EEE0"
+                    },
+                    indicator_2_2:{
+                        value: 35,
+                        color: "#66708B"
+                    },
+                    
+                    date:"29 дек"
+                },
+                {
+                    indicator_1_1:{
+                        value: 10,
+                        color: "#BCD0EEE0"
+                    },
+                    indicator_1_2:{
+                        value: 20,
+                        color: "#5080CB"
+                    },
+                    indicator_2_1:{
+                        value: 21,
+                        color: "#BCD0EEE0"
+                    },
+                    indicator_2_2:{
+                        value: 35,
+                        color: "#66708B"
+                    },
+                    date:"29 дек"
+                },
+                {
+                    indicator_1_1:{
+                        value: 10,
+                        color: "#BCD0EEE0"
+                    },
+                    indicator_1_2:{
+                        value: 20,
+                        color: "#5080CB"
+                    },
+                    indicator_2_1:{
+                        value: 21,
+                        color: "#BCD0EEE0"
+                    },
+                    indicator_2_2:{
+                        value: 35,
+                        color: "#66708B"
+                    },
+                    date:"29 дек"
+                },
+
+            ]
+        }
+        function searchMaxHeight(data){
+            let valueMax=-1
+            for (const indicatorsIdx in data) {
+                const indicators = data[indicatorsIdx]
+                for (const indicatorIdx in indicators) {
+                    const indicatorValue = indicators[indicatorIdx]
+                    if (valueMax<indicatorValue) {
+                        valueMax = indicatorValue
+                    }
+                }
+            }
+            return valueMax
+        }
+
+        const canvas = document.getElementById("canvas")
+        const ctx = canvas.getContext("2d")
+
+        const yStart = 20
+        const yHeightMax = searchMaxHeight(dataTest.data)*5+yStart     //1pt = 5px
+
+        const width = 20
+        const xStepSubIndicator = 10+width
+        const xStepIndicator = 20+width
+        let xNextIndicator = 16
+
+
+        const xStep = xStepIndicator+xStepSubIndicator
+        const widthCanavas = xStep*dataTest.data.length+12
+        const heightCanavas = yHeightMax
+        canvas.width=widthCanavas
+        canvas.height=heightCanavas
+
+        for (let x = 0; x < widthCanavas; x+=74) {
+            ctx.strokeStyle = "666"
+            ctx.strokeRect(x, 0, 0, heightCanavas)
+        }
+
+        for (let y = 0; y < heightCanavas; y+=50) {    
+            ctx.strokeStyle = "666"
+            ctx.strokeRect(0, y, widthCanavas, 0)
+        }
+        
+
+
+        for (const indicatorsIdx in dataTest.data) {
+            const indicators = dataTest.data[indicatorsIdx]
+
+            ctx.fillStyle = "#5080CB"
+            ctx.fillRect(xNextIndicator, yHeightMax-indicators.indicator_1_2_value*5, width, indicators.indicator_1_2_value*5)
+            
+            ctx.fillStyle = "#BCD0EEE0"
+            ctx.fillRect(xNextIndicator, yHeightMax-indicators.indicator_1_1_value*5, width, indicators.indicator_1_1_value*5)
+            
+            xNextIndicator+=xStepSubIndicator
+
+            ctx.fillStyle = "#66708B"
+            ctx.fillRect(xNextIndicator, yHeightMax-indicators.indicator_2_2_value*5, width, indicators.indicator_2_2_value*5)
+
+            ctx.fillStyle = "#BCD0EEE0"
+            ctx.fillRect(xNextIndicator, yHeightMax-indicators.indicator_2_1_value*5, width, indicators.indicator_2_1_value*5)
+
+            xNextIndicator+=xStepIndicator
+
+        }
+
+
+    </script>
+</body>
+</html>
