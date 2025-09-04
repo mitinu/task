@@ -1,8 +1,13 @@
 <template>
-    <div class="chart">
-        <columnNumbering/>
+    <div 
+    class="chart" 
+    >
+        <columnNumbering
+            :height="height"
+        />
         <columnsMain
-            :data="testData.data"
+            :height="height"
+            :dataChart="dataChart"
         />
     </div>
 </template>
@@ -13,82 +18,37 @@ import columnNumbering from './columnNumbering.vue';
 
 export default {
     name: "chart",
+    props:{
+        dataChart:{required: true}
+    },
     components:{
         columnsMain,
         columnNumbering
     },
     data(){
         return{
-            testData: {
-                data: [
-                    {
-                        indicator_1_1:{
-                            value: 10,
-                            color: "#BCD0EEE0"
-                        },
-                        indicator_1_2:{
-                            value: 20,
-                            color: "#5080CB"
-                        },
-                        indicator_2_1:{
-                            value: 21,
-                            color: "#BCD0EEE0"
-                        },
-                        indicator_2_2:{
-                            value: 35,
-                            color: "#66708B"
-                        },
-                        
-                        date:"29 дек"
-                    },
-                    {
-                        indicator_1_1:{
-                            value: 10,
-                            color: "#BCD0EEE0"
-                        },
-                        indicator_1_2:{
-                            value: 20,
-                            color: "#5080CB"
-                        },
-                        indicator_2_1:{
-                            value: 21,
-                            color: "#BCD0EEE0"
-                        },
-                        indicator_2_2:{
-                            value: 35,
-                            color: "#66708B"
-                        },
-                        date:"29 дек"
-                    },
-                    {
-                        indicator_1_1:{
-                            value: 10,
-                            color: "#BCD0EEE0"
-                        },
-                        indicator_1_2:{
-                            value: 20,
-                            color: "#5080CB"
-                        },
-                        indicator_2_1:{
-                            value: 21,
-                            color: "#BCD0EEE0"
-                        },
-                        indicator_2_2:{
-                            value: 35,
-                            color: "#66708B"
-                        },
-                        date:"29 дек"
-                    },
-
-                ]
+            height: null
+        }
+    },
+    beforeMount(){
+        let maxNumber = 0
+        for (const indicatorsKey in this.dataChart) {
+           const indicators = this.dataChart[indicatorsKey]
+           for (const indicatorKey in indicators) {
+                const indicator = indicators[indicatorKey]
+                if(maxNumber<indicator.value)
+                    maxNumber = indicator.value
             }
         }
+        this.height = (parseInt((maxNumber+"").slice(0,1))+1)*10**(Math.floor(Math.log10(Math.abs(maxNumber))))
+        console.log(this.height)
     }
 }
 </script>
 
 <style>
 .chart{
+    flex: 1;
     display: flex;
 }
 </style>

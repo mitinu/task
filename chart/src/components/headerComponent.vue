@@ -1,19 +1,19 @@
 <template>
     <div class="headerComponent p5">
         <div></div>
-        <div><span class="ts16">{{ heading }}</span></div>
+        <div class="alignSelfCenter"><span class="ts16">{{ heading }}</span></div>
         <div class="changWindow">
-            <div class="changWindowItem" @click.stop="exit">
+            <div class="m8" @click.stop="exit">
                 <svg width="10" height="10" viewBox="0 0 10 10">
                     <line x1="2" y1="5" x2="8" y2="5" stroke="currentColor" stroke-width="1"/>
                 </svg>
             </div>
-            <div class="changWindowItem" @click.stop="swapShapeScreen">
+            <div class="m8" @click.stop="swapShapeScreen">
                 <svg width="10" height="10" viewBox="0 0 10 10">
                     <rect x="1" y="1" width="8" height="8" fill="none" stroke="currentColor" stroke-width="1"/>
                 </svg>
             </div>
-            <div class="changWindowItem" @click.stop="exit">
+            <div class="m8" @click.stop="exit">
                 <svg width="10" height="10" viewBox="0 0 10 10">
                     <line x1="2" y1="2" x2="8" y2="8" stroke="currentColor" stroke-width="1"/>
                     <line x1="8" y1="2" x2="2" y2="8" stroke="currentColor" stroke-width="1"/>
@@ -27,7 +27,7 @@
 export default {
     name: "headerComponent",
     props:{
-        heading:{default: "заголовок"}
+        heading:{default: "Заголовок блока"}
     },
     methods:{
         exit(){
@@ -42,6 +42,9 @@ export default {
 </script>
 
 <style>
+.alignSelfCenter{
+    align-self: center;
+}
 .p5{
     padding: 5px;
     box-sizing: border-box;
@@ -53,7 +56,7 @@ export default {
     display: flex;
     cursor: pointer;
 }
-.changWindowItem{
+.m8{
     margin: 8px;
 }
 .hollowCube{
@@ -72,5 +75,6 @@ export default {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    
 }
 </style>
