@@ -11,8 +11,6 @@
                 :indicators="indicators"
             />  
         </div>
-        
-        
     </div>
     <div class="grid">
         <div
@@ -63,6 +61,21 @@ export default {
     height: 50px;
 }
 .columnsMain{
+    overflow: auto;
+    
+    /* Для Chrome, Safari, Edge */
+    &::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+    -ms-overflow-style: none;  /* IE и Edge */
+    scrollbar-width: none;     /* Firefox */
+
+
+
+
+
     flex: 999;
     width: 100%;
     position: relative;
@@ -83,6 +96,7 @@ export default {
         display: flex;
         width: 100%;
         .columnBorder{
+            min-width: 75px;
             flex: 1;
             display: flex;
             flex-direction: column;

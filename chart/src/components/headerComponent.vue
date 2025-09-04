@@ -4,20 +4,35 @@
         <div class="alignSelfCenter"><span class="ts16">{{ heading }}</span></div>
         <div class="changWindow">
             <div class="m8" @click.stop="exit">
-                <svg width="10" height="10" viewBox="0 0 10 10">
-                    <line x1="2" y1="5" x2="8" y2="5" stroke="currentColor" stroke-width="1"/>
-                </svg>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.80762 10.085L17.3927 10.1311" stroke="white" stroke-width="1.66667" stroke-linecap="round"/>
+            </svg>
+
             </div>
             <div class="m8" @click.stop="swapShapeScreen">
-                <svg width="10" height="10" viewBox="0 0 10 10">
-                    <rect x="1" y="1" width="8" height="8" fill="none" stroke="currentColor" stroke-width="1"/>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_2357_1103)">
+                    <path d="M4.1665 7.5L1.6665 10L4.1665 12.5" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M7.5 4.16699L10 1.66699L12.5 4.16699" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12.5 15.833L10 18.333L7.5 15.833" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15.8335 7.5L18.3335 10L15.8335 12.5" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M1.6665 10H18.3332" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10 1.66699V18.3337" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_2357_1103">
+                    <rect width="20" height="20" fill="white"/>
+                    </clipPath>
+                    </defs>
                 </svg>
+
             </div>
             <div class="m8" @click.stop="exit">
-                <svg width="10" height="10" viewBox="0 0 10 10">
-                    <line x1="2" y1="2" x2="8" y2="8" stroke="currentColor" stroke-width="1"/>
-                    <line x1="8" y1="2" x2="2" y2="8" stroke="currentColor" stroke-width="1"/>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.5 3.5L3.5 16.5" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16.5 16.5L3.5 3.5" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
+
             </div>
         </div>
     </div>  
