@@ -14,8 +14,8 @@ export default {
             isDragging: false,
             startX: 0,
             startY: 0,
-            // width: 950,
-            // height: 540,
+            startPosX: 0,
+            startPosY: 0,
             fullScreen: false,
 
         }

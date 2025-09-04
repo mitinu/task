@@ -41,6 +41,7 @@ import chart from './components/chart.vue';
 import legendChart from './components/legendChart.vue';
 import headerComponent from '@/components/headerComponent.vue';
 import moveDiv from '@/mixins/moveDiv.vue'
+import { ref } from 'vue';
 
 
 export default {
