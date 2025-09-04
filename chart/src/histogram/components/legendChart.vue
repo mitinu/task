@@ -1,12 +1,12 @@
 <template>
     <div class="legends">
         <div
-            v-for="(legend, idx) in testData.legends"
+            v-for="(legend, idx) in legends"
             :key="idx"
             class="legend"
         >
             <div :style="{ backgroundColor: legend.color }" class="cube"></div>
-            <span class="ts14">{{ legend.value }}</span>
+            <span class="ts14">{{ legend.title }}</span>
         </div>
     </div>
 </template>
@@ -15,25 +15,8 @@
 
 export default {
     name: "legendChart",  
-    data(){
-        return {
-            testData:{
-                legends:[
-                    {
-                        value: "Позиция за 2020 год",
-                        color: "#5080CB"
-                    },
-                    {
-                        value: "Позиция за 2021 год",
-                        color: "#66708B"
-                    },
-                    {
-                        value: "Часть из общего числа",
-                        color: "#BCD0EEE0"
-                    },
-                ]
-            }
-        }
+    props:{
+        legends:{default: () => []}
     }
 }
 </script>
@@ -56,6 +39,7 @@ export default {
             height: 15px;
             background-color: black;
             margin-right: 10px;
+            align-self: center;
         }
     }
 }

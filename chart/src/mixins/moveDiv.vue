@@ -14,8 +14,6 @@ export default {
             startY: 0,
             width: 950,
             height: 540,
-            startPosX: 0,
-            startPosY: 0,
             fullScreen: false,
 
         }
@@ -24,7 +22,8 @@ export default {
         swapShapeScreen(){
             if (this.fullScreen) {
                 this.width = 950
-                this.height = 540}
+                this.height = 540
+            }
             else{
                 this.width = window.innerWidth  
                 this.height = window.innerHeight
@@ -62,38 +61,7 @@ export default {
             document.removeEventListener('touchmove', this.onDrag);
             document.removeEventListener('touchend', this.stopDrag);
         },
-        startResize(event) {
-            if (!this.fullScreen ) {
-                event.preventDefault();
-                this.isResizing = true;
-                this.startX = event.clientX;
-                this.startY = event.clientY;
-                this.startWidth = this.width;
-                this.startHeight = this.height;
-                this.startPosX = this.positionX;
-                this.startPosY = this.positionY;
-                
-                document.addEventListener('mousemove', this.onResize);
-                document.addEventListener('mouseup', this.stopResize);
-            }
-        },
-        onResize(event) {
-            if (!this.isResizing) return;
-
-            const deltaX = event.clientX - this.startX;
-            const deltaY = event.clientY - this.startY;
-
-
-            this.width = Math.max(100, this.startWidth + deltaX);
-            this.height = Math.max(100, this.startHeight + deltaY);
-            
-                
-        },
-        stopResize() {
-            this.isResizing = false;
-            document.removeEventListener('mousemove', this.onResize);
-            document.removeEventListener('mouseup', this.stopResize);
-        }
+       
     }
 }
 </script>

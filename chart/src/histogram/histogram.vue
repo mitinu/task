@@ -1,5 +1,7 @@
 <template>
-    <div class="histogram" :ref="el => histogram = el"
+    <div 
+        class="histogram" 
+        :ref="el => histogram = el"  
         :style="{ 
             transform: `translate(${positionX}px, ${positionY}px)`,
             width: `${width}px`,
@@ -9,7 +11,6 @@
 
         >
         <headerComponent
-            heading="Заголовок блока"
             @exit="exit"
             @swapShapeScreen="swapShapeScreen"
               
@@ -21,12 +22,15 @@
    
 
         />
-        <div class="mb20"><span class="ts14">Кол-во, шт</span></div>
-        <chart/>
-        <legendChart/>
+        <div class="mb20"><span class="ts14">{{columnTittle}}</span></div>
+        <chart
+            :dataChart="dataHistogram.dataChart"
+        />
+        <legendChart
+            :legends="dataHistogram.legends"
+        />
         <changeExtension
             v-if="!fullScreen"
-            @mousedown="startResize($event)"
         />
     </div>
 </template>
@@ -37,6 +41,7 @@ import chart from './components/chart.vue';
 import legendChart from './components/legendChart.vue';
 import headerComponent from '@/components/headerComponent.vue';
 import moveDiv from '@/mixins/moveDiv.vue'
+import { ref } from 'vue';
 
 
 export default {
@@ -46,6 +51,10 @@ export default {
         legendChart,
         changeExtension,
         headerComponent
+    },
+    props:{
+        columnTittle:{default: "Кол-во, шт"},
+        dataHistogram:{required: true}
     },
     mixins: [moveDiv],
     methods:{
@@ -65,6 +74,8 @@ export default {
     margin-bottom: 20px;
 }
 .histogram{
+    resize: auto;
+
     width: 960px;
     height: 540px;
     position: relative;
@@ -75,5 +86,31 @@ export default {
 
     overflow: auto;
     user-select: none;
+
+    display: flex;
+    flex-direction: column;
+    
+
+
+
+
+    /* Скрываем иконку resize */
+    &::-webkit-resizer {
+        display: none;
+        background-color: transparent;
+    }
+    
+    /* Для Firefox */
+    & {
+        scrollbar-width: none;
+    }
+    
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
 }
+
+
+
 </style>

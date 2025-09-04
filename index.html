@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .contener_canvas{
-            height: 340px;
-            width: 880px;
+        .resizable-block {
+            resize: auto;
             overflow: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            .canvas{
-                border: 1px solid black;
-            }
+            border: 1px solid #ccc;
+            padding: 10px;
         }
     </style>
 </head>
 <body>
+    <div ref="resizableElement" class="resizable-block">
+        Содержимое блока
+        <p>Текущая высота: {{ height }}px</p>
+    </div>
     <div>
         <div class="contener_canvas">
             <canvas class="canvas" id="canvas"></canvas>
