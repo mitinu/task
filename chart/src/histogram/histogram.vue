@@ -29,19 +29,23 @@
         <legendChart
             :legends="dataHistogram.legends"
         />
-        <changeExtension
-            v-if="!fullScreen"
-        />
+        <svg 
+        v-if="!fullScreen"
+        class="changeExtension"
+        width="34" height="34" viewBox="0 0 34 34" fill="none">
+            <path d="M34 0V34H0L34 0Z" fill="#747886"/>
+            <path d="M13 28.3555L28.5 12.8555" stroke="#B3B3B3" stroke-width="2" stroke-linecap="round"/>
+            <path d="M19 29.5518L29 19.5518" stroke="#B3B3B3" stroke-width="2" stroke-linecap="round"/>
+            <path d="M25 30.9131L30.5 25.4131" stroke="#B3B3B3" stroke-width="2" stroke-linecap="round"/>
+        </svg>
     </div>
 </template>
 
 <script>
-import changeExtension from '@/components/changeExtension.vue';
 import chart from './components/chart.vue';
 import legendChart from './components/legendChart.vue';
 import headerComponent from '@/components/headerComponent.vue';
 import moveDiv from '@/mixins/moveDiv.vue'
-import { ref } from 'vue';
 
 
 export default {
@@ -49,7 +53,6 @@ export default {
     components:{
         chart,
         legendChart,
-        changeExtension,
         headerComponent
     },
     props:{
@@ -115,7 +118,11 @@ export default {
     }
 
 }
-
+.changeExtension{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
 
 
 </style>
