@@ -90,7 +90,7 @@ export default {
                             color: "#66708B"
                         },
                         date:"29 дек"
-                    },
+                    },  
                 ]
             }
         }

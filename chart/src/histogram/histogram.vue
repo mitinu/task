@@ -4,8 +4,8 @@
         :ref="el => histogram = el"  
         :style="{ 
             transform: `translate(${positionX}px, ${positionY}px)`,
-            width: `${width}px`,
-            height: `${height}px`
+            // width: `${width}px`,
+            // height: `${height}px`
         }"
         :move="!fullScreen"
 
@@ -41,7 +41,6 @@ import chart from './components/chart.vue';
 import legendChart from './components/legendChart.vue';
 import headerComponent from '@/components/headerComponent.vue';
 import moveDiv from '@/mixins/moveDiv.vue'
-import { ref } from 'vue';
 
 
 export default {
@@ -57,6 +56,11 @@ export default {
         dataHistogram:{required: true}
     },
     mixins: [moveDiv],
+    computed:{
+        cauntSlider(){
+            return this.width
+        }
+    },
     methods:{
         exit(){
             this.$emit("exit")

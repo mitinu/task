@@ -41,7 +41,6 @@ export default {
             }
         }
         this.height = (parseInt((maxNumber+"").slice(0,1))+1)*10**(Math.floor(Math.log10(Math.abs(maxNumber))))
-        console.log(this.height)
     }
 }
 </script>

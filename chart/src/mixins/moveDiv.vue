@@ -9,11 +9,13 @@ export default {
         return {
             positionX: 0,
             positionY: 0,
+            savePositionX: 0,
+            savePositionY: 0,
             isDragging: false,
             startX: 0,
             startY: 0,
-            width: 950,
-            height: 540,
+            // width: 950,
+            // height: 540,
             fullScreen: false,
 
         }
@@ -21,12 +23,19 @@ export default {
     methods: {
         swapShapeScreen(){
             if (this.fullScreen) {
-                this.width = 950
-                this.height = 540
+                this.histogram.style.width =" 950px"
+                this.histogram.style.height =" 540px"
+                this.positionX = this.savePositionX
+                this.positionY = this.savePositionY
             }
             else{
-                this.width = window.innerWidth  
-                this.height = window.innerHeight
+                
+                this.histogram.style.width = "100%"
+                this.histogram.style.height = `${window.innerHeight}px`
+               
+                this.savePositionX = this.positionX
+                this.savePositionY = this.positionY
+               
                 this.positionX = 0
                 this.positionY = 0
             }
