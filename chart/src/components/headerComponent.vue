@@ -3,13 +3,13 @@
         <div></div>
         <div class="alignSelfCenter"><span class="ts16">{{ heading }}</span></div>
         <div class="changWindow">
-            <div class="m8" @click.stop="exit">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3.80762 10.085L17.3927 10.1311" stroke="white" stroke-width="1.66667" stroke-linecap="round"/>
-            </svg>
+            <div class="mr8" @click.stop="exit">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.80762 10.085L17.3927 10.1311" stroke="white" stroke-width="1.66667" stroke-linecap="round"/>
+                </svg>
 
             </div>
-            <div class="m8" @click.stop="swapShapeScreen">
+            <div class="mr8" @click.stop="swapShapeScreen">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_2357_1103)">
                     <path d="M4.1665 7.5L1.6665 10L4.1665 12.5" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
@@ -27,7 +27,7 @@
                 </svg>
 
             </div>
-            <div class="m8" @click.stop="exit">
+            <div class="mr8" @click.stop="exit">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16.5 3.5L3.5 16.5" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M16.5 16.5L3.5 3.5" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -71,8 +71,11 @@ export default {
     display: flex;
     cursor: pointer;
 }
-.m8{
-    margin: 8px;
+.mr8{
+    height: 100%;
+    padding-right: 8px;
+    align-content: center;
+    justify-items: center;
 }
 .hollowCube{
     border: 1px solid white;
@@ -90,6 +93,6 @@ export default {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    
+    height: 36px;
 }
 </style>

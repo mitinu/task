@@ -1,13 +1,15 @@
 <template>
 <div class="column_numbering">
      <div class="column">
-        <div
-            v-for="value in numberingFields(height).reverse()"    
-            :key="value"
-            class="number"
-        >
-            <div><span class="ts14">{{ value }}</span></div>
+        <div class="numbers">
+            <div
+                v-for="value in numberingFields(height).reverse()"    
+                :key="value"
+            >
+                <span class="ts14">{{ value }}</span>
+            </div>
         </div>
+        <div class="h50px"></div>
     </div>
     <div class="grid">
         <div
@@ -68,11 +70,13 @@ export default {
         display: flex;
         flex-direction: column;
         width: 45px;
-        .number{
+        .numbers{
             flex: 1;
+            display: flex;
+            flex-direction: column;
             width: 30px;
-            align-content: start;
-            justify-items: center;
+            align-items: center;
+            justify-content: space-between;
         }
     }
 
