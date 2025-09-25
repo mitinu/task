@@ -1,5 +1,11 @@
 <template>
-<div class="columnsMain">
+<div class="columnsMain"  
+ref="columnsMain"
+    @mousedown="handleMouseDown"
+    @mousemove="handleMouseMove"
+    @mouseup="handleMouseUp"
+    @mouseleave="handleMouseUp"
+>
     <div class="container_columns">
         <div 
             v-for="(indicators, idx) in dataChart"
@@ -32,6 +38,7 @@
 
 <script>
 import column from './column.vue';
+import scrollingMouseMovements from '@/mixins/scrollingMouse.vue'
 
 
 export default {
@@ -39,6 +46,7 @@ export default {
     components:{
         column
     },
+    mixins: [scrollingMouseMovements],
     props:{
         height:{required: true},
         dataChart:{required: true}
@@ -50,8 +58,8 @@ export default {
                 return 10
             else 
                 return ferstNumber
-        },
-    }
+        }
+    },
 }
 </script>
 
@@ -62,6 +70,14 @@ export default {
 }
 .columnsMain{
     overflow: auto;
+
+    cursor: grab;
+    &:active {
+        cursor: grabbing;
+    }
+
+    user-select: none;
+
     
     /* Для Chrome, Safari, Edge */
     &::-webkit-scrollbar {
